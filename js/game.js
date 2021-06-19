@@ -71,7 +71,7 @@ class Game{
             }
             
             if(allPlayers[plr].attack){
-                console.log(allPlayers[plr].name)
+                
                 var bullet = createSprite(players[index-1].x, players[index-1].y, 5,5)
                 
                 bullet.shapeColor = "blue"
