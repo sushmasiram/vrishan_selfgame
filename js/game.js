@@ -49,7 +49,7 @@ class Game{
         var x=200,y;
         drawSprites()
         for(var plr in allPlayers ){
-            //console.log(allPlayers[plr])
+            
             index = index + 1
             y = displayHeight-150           
             
@@ -58,7 +58,7 @@ class Game{
 
             push()
             fill('white')
-            text(allPlayers[plr].name, players[index-1].x, players[index-1].y - 50)
+            text(allPlayers[plr].name, players[index-1].x-15, players[index-1].y - 50)
             pop()
             
             x = x + 500
@@ -77,19 +77,32 @@ class Game{
                 bullet.shapeColor = "blue"
                 if(players[index-1].x === 200){
                     bullet.velocityX = 3
-                    //bGroup1.add(bullet)
+                    bGroup1.add(bullet)
                 }
                 else{
                     bullet.velocityX = -3
-                    //bGroup2.add(bullet)
+                    bGroup2.add(bullet)
                 }
             }
             if(player.index === index){
                 players[index-1].shapeColor = 'red'
             }
 
-            /*
-                //console.log(allPlayers[plr].name + ' is attacked')
+            if(player.index === index){ 
+                if(players[index-1].x === 200){  
+                    if(players[index-1].isTouching(bGroup2)){ // player1 is creating the bullet, and that 
+                        console.log(allPlayers[plr].name + ' is attacked')
+                    //player.lives = player.lives - 1
+                    //bGroup.destroyEach()
+                 }
+            
+            }else{
+                if(players[index-1].isTouching(bGroup1)){ // player1 is creating the bullet, and that 
+                    console.log(allPlayers[plr].name + ' is attacked')
+                }
+            }
+
+            /*                
                 if(player.index === index){ 
                     if(players[index-1].x === 200){  
                         if(players[index-1].isTouching(bGroup2)){ // player1 is creating the bullet, and that 
@@ -106,9 +119,7 @@ class Game{
                 }
             }*/
 
-        }   
-       
-
+        }
         
         if(keyWentDown(DOWN_ARROW)){
             player.state = "ducking"     
@@ -123,10 +134,8 @@ class Game{
             player.attack = false
         }
 
-        player.update();        
-   
+        player.update();  
     
     }   
-
-
+}
 }
