@@ -89,7 +89,9 @@ class Game{
             }
 
             if(player.index === index){ 
-                if(players[index-1].x === 200){  
+                console.log(players[index-1].x)
+                if(players[index-1].x === 200){
+                    console.log("first player") 
                     if(players[index-1].isTouching(bGroup2)){ // player1 is creating the bullet, and that 
                         console.log(allPlayers[plr].name + ' is attacked')
                     //player.lives = player.lives - 1
